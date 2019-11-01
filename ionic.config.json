@@ -1,0 +1,7 @@
+{
+  "name": "sharedmodule",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

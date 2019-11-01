@@ -1,0 +1,10 @@
+<ion-card class="welcome-card"  routerLink="/itemdetail/{{item.id}}">
+  <ion-img [src]="item?.image"></ion-img>
+  <ion-card-header>
+    <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+    <ion-card-title>{{item?.title}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p [innerHTML]="item?.description"></p>
+  </ion-card-content>
+</ion-card>

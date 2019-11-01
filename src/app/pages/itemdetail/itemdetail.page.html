@@ -1,0 +1,19 @@
+<ion-header parallax imageUrl="https://ununsplash.imgix.net/photo-1421091242698-34f6ad7fc088?fit=crop&fm=jpg&h=650&q=75&w=950" maximumHeight="350" expandedColor="#AAA" titleColor="white">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button  defaultHref="home"></ion-back-button>
+        </ion-buttons>
+    <ion-title>{{item?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p [innerHTML]="item?.description"></p>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

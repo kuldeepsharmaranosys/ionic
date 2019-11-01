@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item (click)="selectPhoto()">
+      Take Picture {{imageData}}
+    </ion-item>
+    <ion-item (click)="ss.iabOpen('https://www.google.com/')">
+        In App Browser : Open google
+    </ion-item>
+    <ion-item (click)="ss.rateApp()">
+        App Rate : Rate App
+  </ion-item>
+  <ion-item (click)="ss.share('Share this app')">
+      Social Sharing : Social Sharing URL
+  </ion-item>
+  <ion-item (click)="ss.updateVersion()">
+      Market : Update app version
+</ion-item>
+  </ion-list>
+  <itemlist *ngFor="let item of items" [item]="item"></itemlist>
+</ion-content>
