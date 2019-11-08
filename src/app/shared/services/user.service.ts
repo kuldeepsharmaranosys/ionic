@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { STORAGE } from '../../constants/storage';
 import { reject } from 'q';
 @Injectable({
@@ -7,7 +8,7 @@ import { reject } from 'q';
 export class UserService {
   user: any;
   isLoggedIn:boolean = false;
-  constructor() { }
+  constructor(private storage: Storage) { }
 
   setUser(user) {
     this.user = user;
@@ -16,7 +17,9 @@ export class UserService {
   login(user) {
     return new Promise(( resolve, reject) => {
       this.isLoggedIn = true;
-      localStorage.setItem(STORAGE.isLoggedIn, '1');
+      //localStorage.setItem(STORAGE.isLoggedIn, '1');
+      this.storage.set(STORAGE.isLoggedIn, '1');
+      this.storage.set(STORAGE.userData, user);
       this.user = user;
       resolve();
     });
@@ -24,15 +27,20 @@ export class UserService {
   logout() {
     return new Promise( ( resolve, reject) => {
       this.isLoggedIn = false;
-      localStorage.setItem(STORAGE.isLoggedIn, '0');
+      //localStorage.setItem(STORAGE.isLoggedIn, '0');
+      this.storage.set(STORAGE.isLoggedIn, '0');
       this.user = {};
       resolve();
     });
   }
   initializeUser() {
-    if (localStorage.getItem(STORAGE.isIntroComplate) === '1') {
-      this.user = localStorage.getItem(STORAGE.userData);
-      this.isLoggedIn = true;
-    }
+    this.storage.get(STORAGE.isLoggedIn).then(isLoggedIn => {
+      if (isLoggedIn === '1') {
+        this.storage.get(STORAGE.userData).then(userData => {
+          this.user = userData;
+          this.isLoggedIn = true;
+        });
+      }
+    });
   }
 }

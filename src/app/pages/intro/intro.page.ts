@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 import { SharedService } from '../../shared/services/shared.service';
 import { STORAGE } from '../../constants/storage';
 @Component({
@@ -10,7 +11,7 @@ import { STORAGE } from '../../constants/storage';
 })
 export class IntroPage implements OnInit {
   slides = [];
-  constructor(public menu: MenuController, private router: Router, private ss: SharedService) {
+  constructor(public menu: MenuController, private router: Router, private ss: SharedService, private storage: Storage) {
     this.slides = [
       {
         title: 'WELCOME',
@@ -59,7 +60,8 @@ export class IntroPage implements OnInit {
   ngOnInit() {}
 
   goToHome() {
-    localStorage.setItem(STORAGE.isIntroComplate, '1');
+    this.storage.set(STORAGE.isIntroComplate, '1');
+    //localStorage.setItem(STORAGE.isIntroComplate, '1');
     this.router.navigate(['login']);
   }
 

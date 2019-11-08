@@ -1,24 +1,30 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivate } from '@angular/router';
+import { Storage } from '@ionic/storage';
 import { STORAGE } from '../../constants/storage';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate  {
-  constructor(public router: Router) {}
+  constructor(public router: Router, private storage: Storage) {}
   async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-    let isComplete = true;
-    console.log("STORAGE.isIntroComplate",localStorage.getItem(STORAGE.isIntroComplate));
-    if (localStorage.getItem(STORAGE.isIntroComplate) == null) {
-      this.router.navigateByUrl('/intro');
-      isComplete = false;
-     } else if (localStorage.getItem(STORAGE.isLoggedIn) == null || localStorage.getItem(STORAGE.isLoggedIn) === '0') {
-      this.router.navigateByUrl('/login');
-      isComplete = false;
-     }
-    return isComplete;
+    return await this.storage.get(STORAGE.isIntroComplate).then(async (isIntroComplate) => {
+      if (isIntroComplate == null) {
+        this.router.navigateByUrl('/intro');
+        return false;
+       } else {
+        return await this.storage.get(STORAGE.isLoggedIn).then((isLoggedIn) => {
+            if (isLoggedIn == null || isLoggedIn === '0') {
+              this.router.navigateByUrl('/login');
+              return false;
+            } else {
+              return true;
+            }
+        });
+       }
+    });
   }
 }

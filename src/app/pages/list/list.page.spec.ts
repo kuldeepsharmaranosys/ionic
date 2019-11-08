@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ListPage } from './list.page';
 
 describe('ListPage', () => {
@@ -11,7 +11,10 @@ describe('ListPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ListPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ListPage);
