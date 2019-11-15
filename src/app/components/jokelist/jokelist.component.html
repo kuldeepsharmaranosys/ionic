@@ -1,0 +1,8 @@
+<ion-card class="welcome-card"  routerLink="/jokedetail/{{joke.id}}">
+  <ion-card-header *ngIf="joke?.categories.length">
+    <ion-card-subtitle>{{joke?.categories}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <p [innerHTML]="joke?.joke"></p>
+  </ion-card-content>
+</ion-card>

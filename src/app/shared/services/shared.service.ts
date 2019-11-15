@@ -9,21 +9,18 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
-import { User } from '../../modals/user';
 import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
   public environment = environment;
-  public user: User;
   public loading;
   deviceType = 'android';
   public validation_msg = {};
 
   public alert;
   constructor(private http: HttpClient, private loadingController: LoadingController, public alertCtrl: AlertController, public toastController: ToastController, private market: Market, private socialSharing: SocialSharing, private appRate: AppRate, private router: Router,  private platform: Platform, private iab: InAppBrowser) {
-    this.user = new User({id: 1, name: 'Kuldeep'});
     this.deviceType = this.platform.is('android') ? 'android' : 'ios';
     this.validation_msg = {
       'required': ' is required.',

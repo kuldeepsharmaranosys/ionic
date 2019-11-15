@@ -1,12 +1,17 @@
-interface UserInterface{
-    id: number
-    name: string
+interface UserInterface {
+    id: number;
+    name: string;
+    email: string;
 }
-export class User implements UserInterface{
-    id: number
-    name: string
-    constructor(user: UserInterface){
-        this.id = user.id;
-        this.name = user.name
+export class User implements UserInterface {
+    id: number = 10;
+    name: string = 'Kuldeep';
+    email: string;
+    constructor(data: UserInterface) {
+        for (const value in data) {
+            if (data[value]) {
+                this[value] = data[value];
+            }
+        }
     }
 }

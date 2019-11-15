@@ -18,15 +18,16 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'home/:category',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'list',
     loadChildren: () => import('./pages/list/list.module').then(m => m.ListPageModule),
     canActivate: [AuthGuard]
   },
-  {
-    path: 'itemdetail/:id',
-    loadChildren: () => import('./pages/itemdetail/itemdetail.module').then(m => m.ItemdetailPageModule),
-    canActivate: [AuthGuard]
-  }
+  { path: 'jokedetail/:id', loadChildren: './pages/jokedetail/jokedetail.module#JokedetailPageModule' }
 ];
 
 @NgModule({

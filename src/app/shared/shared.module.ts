@@ -18,13 +18,11 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { ParallaxHeaderDirective } from './directives/parallax-header.directive';
 
-import { ItemlistComponent } from './components/itemlist/itemlist.component';
 
 import { ApiInterceptorService } from './interceptors/api-interceptor.service';
 
 @NgModule({
   declarations: [
-    ItemlistComponent,
     ParallaxHeaderDirective
   ],
   providers: [
@@ -58,7 +56,6 @@ import { ApiInterceptorService } from './interceptors/api-interceptor.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ItemlistComponent,
     ParallaxHeaderDirective
   ]
 })

@@ -55,14 +55,14 @@ export class ApiInterceptorService implements HttpInterceptor {
     }
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
-        setTimeout(() => {this.ss.hideLoader(); }, 5000);
+        this.ss.hideLoader();
         if (event instanceof HttpResponse) {
           console.log("event--->>>", event);
         }
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        setTimeout(() => {this.ss.hideLoader(); }, 5000);
+        this.ss.hideLoader();
         if (error.status === 404) {
           this.ss.showAlert('Server Error', 'OK');
         } else if (error.status === 500 ) {

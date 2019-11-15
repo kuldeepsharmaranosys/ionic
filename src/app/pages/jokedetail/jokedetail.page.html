@@ -3,17 +3,17 @@
       <ion-buttons slot="start">
           <ion-back-button  defaultHref="home"></ion-back-button>
         </ion-buttons>
-    <ion-title>{{item?.title}}</ion-title>
+    <ion-title>{{joke?.categories}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <ion-card class="welcome-card">
       <ion-card-header>
-        <ion-card-subtitle>{{item?.date}}</ion-card-subtitle>
+        <ion-card-subtitle>{{joke?.categories}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <p [innerHTML]="item?.description"></p>
+        <p [innerHTML]="joke?.joke"></p>
       </ion-card-content>
     </ion-card>
 </ion-content>

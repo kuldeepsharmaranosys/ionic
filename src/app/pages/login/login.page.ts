@@ -52,7 +52,7 @@ export class LoginPage implements OnInit {
       //      this.navCtrl.setRoot('HomePage');
       //     }, error => {  }
       //   )
-      this.us.login({fname: 'Kuldeep'}).then((result) => {
+      this.us.login({email: this.loginForm.value.email}).then((result) => {
         this.router.navigateByUrl('/home');
       });
     }

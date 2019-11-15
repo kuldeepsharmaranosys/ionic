@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../../shared/shared.module';
 import { HomePage } from './home.page';
-import { fromEventPattern } from 'rxjs';
+import { JokelistComponent } from '../../components/jokelist/jokelist.component';
 
 @NgModule({
   imports: [
@@ -21,6 +21,6 @@ import { fromEventPattern } from 'rxjs';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, JokelistComponent]
 })
 export class HomePageModule {}

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { PushnotificationService } from './shared/services/pushnotification.service';
 import { UserService } from './shared/services/user.service';
+import { JokeCategoryService } from './services/joke-category.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -31,10 +32,12 @@ export class AppComponent {
     private statusBar: StatusBar,
     public router: Router,
     private ps: PushnotificationService,
-    public us: UserService
+    public us: UserService,
+    private jcs: JokeCategoryService
   ) {
     this.us.initializeUser();
     this.initializeApp();
+    this.jcs.get();
   }
 
   initializeApp() {

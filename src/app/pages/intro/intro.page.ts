@@ -61,7 +61,6 @@ export class IntroPage implements OnInit {
 
   goToHome() {
     this.storage.set(STORAGE.isIntroComplate, '1');
-    //localStorage.setItem(STORAGE.isIntroComplate, '1');
     this.router.navigate(['login']);
   }
 

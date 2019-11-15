@@ -3,7 +3,7 @@ export const environment = {
   name: 'Ionic Prod',
   appVersion: 1.0,
   packageId: 'com.ionic8',
-  APIBASEURL: 'http://localhost/',
+  APIBASEURL: 'http://api.icndb.com/',
   playStoreURL: 'https://play.google.com/store/apps/details?id=com.ionic8',
   ratePlayStoreURL: 'market://details?id=com.ionic8',
   socialShare: {

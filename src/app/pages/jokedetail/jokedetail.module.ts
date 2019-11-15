@@ -7,12 +7,12 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ItemdetailPage } from './itemdetail.page';
+import { JokedetailPage } from './jokedetail.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ItemdetailPage
+    component: JokedetailPage
   }
 ];
 
@@ -24,6 +24,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ItemdetailPage]
+  declarations: [JokedetailPage]
 })
-export class ItemdetailPageModule {}
+export class JokedetailPageModule {}
