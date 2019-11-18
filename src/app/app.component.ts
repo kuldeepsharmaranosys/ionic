@@ -33,7 +33,7 @@ export class AppComponent {
     public router: Router,
     private ps: PushnotificationService,
     public us: UserService,
-    private jcs: JokeCategoryService
+    public jcs: JokeCategoryService
   ) {
     this.us.initializeUser();
     this.initializeApp();

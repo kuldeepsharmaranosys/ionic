@@ -10,8 +10,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "development": "ionic build --configuration=development && cordova build android",
-    "developmentrun": "ionic build --configuration=development && cordova run android --prod"
+    "qat": "ionic build --configuration=qat && cordova build android --prod",
+    "qatrun": "ionic build --configuration=qat && cordova run android --prod",
+    "uat": "ionic build --configuration=uat && cordova build android --prod",
+    "uatrun": "ionic build --configuration=uat && cordova run android --prod"
   },
   "private": true,
   "dependencies": {

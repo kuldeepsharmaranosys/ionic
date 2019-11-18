@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  name: 'Ionic Development',
+  name: 'Ionic qat',
   appVersion: 1.0,
   packageId: 'com.ionic8',
   APIBASEURL: 'http://api.icndb.com/',

@@ -66,11 +66,35 @@
                 }
               ]
             },
-            "development": {
+            "uat": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
+                  "with": "src/environments/environment.uat.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "qat": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qat.ts"
                 }
               ],
               "optimization": true,
@@ -104,8 +128,11 @@
             "production": {
               "browserTarget": "app:build:production"
             },
-            "development": {
-              "browserTarget": "app:build:development"
+            "uat": {
+              "browserTarget": "app:build:uat"
+            },
+            "qat": {
+              "browserTarget": "app:build:qat"
             },
             "ci": {
               "progress": false
