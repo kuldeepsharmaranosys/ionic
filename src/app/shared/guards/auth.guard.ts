@@ -5,26 +5,49 @@ import { STORAGE } from '../../constants/storage';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate  {
-  constructor(public router: Router, private storage: Storage) {}
+export class AuthGuard implements CanActivate {
+  constructor(public router: Router, private storage: Storage) { }
   async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-    return await this.storage.get(STORAGE.isIntroComplate).then(async (isIntroComplate) => {
-      if (isIntroComplate == null) {
-        this.router.navigateByUrl('/intro');
-        return false;
-       } else {
-        return await this.storage.get(STORAGE.isLoggedIn).then((isLoggedIn) => {
-            if (isLoggedIn == null || isLoggedIn === '0') {
-              this.router.navigateByUrl('/login');
-              return false;
-            } else {
-              return true;
-            }
+    return await this.storage.get(STORAGE.isLoggedIn).then(async (isLoggedIn) => {
+      if (isLoggedIn === '1') {
+        return true;
+      } else {
+        return await this.storage.get(STORAGE.isLanguageSelected).then(async (isLanguageSelected) => {
+          if (isLanguageSelected == null) {
+            this.router.navigateByUrl('/languageselect');
+            return false;
+          } else {
+            return await this.storage.get(STORAGE.isIntroComplate).then(async (isIntroComplate) => {
+              if (isIntroComplate == null) {
+                this.router.navigateByUrl('/intro');
+                return false;
+              } else {
+                this.router.navigateByUrl('/login');
+                return false;
+              }
+            });
+          }
         });
-       }
+      }
     });
+
+    // return await this.storage.get(STORAGE.isIntroComplate).then(async (isIntroComplate) => {
+    //   if (isIntroComplate == null) {
+    //     this.router.navigateByUrl('/intro');
+    //     return false;
+    //    } else {
+    //     return await this.storage.get(STORAGE.isLoggedIn).then((isLoggedIn) => {
+    //         if (isLoggedIn == null || isLoggedIn === '0') {
+    //           this.router.navigateByUrl('/login');
+    //           return false;
+    //         } else {
+    //           return true;
+    //         }
+    //     });
+    //    }
+    // });
   }
 }

@@ -14,12 +14,13 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ParallaxHeaderDirective } from './directives/parallax-header.directive';
 
 
 import { ApiInterceptorService } from './interceptors/api-interceptor.service';
+
 
 @NgModule({
   declarations: [
@@ -50,14 +51,16 @@ import { ApiInterceptorService } from './interceptors/api-interceptor.service';
     IonicStorageModule.forRoot({
       name: '__ionic8db',
       driverOrder: ['sqlite', 'indexeddb', 'websql']
-    })
+    }),
+    TranslateModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ParallaxHeaderDirective
+    ParallaxHeaderDirective,
+    TranslateModule
   ]
 })
 export class SharedModule {}
-// ionic cordova plugin add cordova-plugin-market && npm install @ionic-native/market && ionic cordova plugin add cordova-plugin-x-socialsharing && npm install @ionic-native/social-sharing && ionic cordova plugin add cordova-plugin-apprate &&  npm install @ionic-native/app-rate && ionic cordova plugin add cordova-plugin-fcm-with-dependecy-updated && npm install @ionic-native/fcm && ionic cordova plugin add cordova-plugin-inappbrowser && npm install @ionic-native/in-app-browser && ionic cordova plugin add cordova-plugin-camera && npm install @ionic-native/camera && ionic cordova plugin add cordova-sqlite-storage && npm install --save @ionic/storage
+// ionic cordova plugin add cordova-plugin-market && npm install @ionic-native/market && ionic cordova plugin add cordova-plugin-x-socialsharing && npm install @ionic-native/social-sharing && ionic cordova plugin add cordova-plugin-apprate &&  npm install @ionic-native/app-rate && ionic cordova plugin add cordova-plugin-fcm-with-dependecy-updated && npm install @ionic-native/fcm && ionic cordova plugin add cordova-plugin-inappbrowser && npm install @ionic-native/in-app-browser && ionic cordova plugin add cordova-plugin-camera && npm install @ionic-native/camera && ionic cordova plugin add cordova-sqlite-storage && npm install --save @ionic/storage && npm install @ngx-translate/core --save && npm install @ngx-translate/http-loader --save

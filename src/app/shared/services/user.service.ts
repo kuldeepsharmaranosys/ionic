@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 import { STORAGE } from '../../constants/storage';
+import { CONFIG } from '../../constants/config';
 import { reject } from 'q';
 import { User } from '../../modals/user';
 @Injectable({
@@ -9,7 +11,7 @@ import { User } from '../../modals/user';
 export class UserService {
   user: User;
   isLoggedIn: boolean = false;
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private translate: TranslateService) { }
 
   setUser(user) {
     this.user = new User(user);
@@ -41,5 +43,14 @@ export class UserService {
         });
       }
     });
+    this.storage.get(STORAGE.language).then((language) => {
+      if (language !== null) {
+        this.translate.setDefaultLang(language);
+        this.translate.use(language);
+      } else {
+        this.translate.setDefaultLang(CONFIG.defaultLanguage);
+        this.translate.use(CONFIG.defaultLanguage);
+      }
+    })
   }
 }

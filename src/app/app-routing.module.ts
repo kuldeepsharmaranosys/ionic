@@ -8,6 +8,7 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  { path: 'languageselect', loadChildren: './pages/languageselect/languageselect.module#LanguageselectPageModule' },
   { path: 'intro', loadChildren: './pages/intro/intro.module#IntroPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
@@ -27,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/list/list.module').then(m => m.ListPageModule),
     canActivate: [AuthGuard]
   },
-  { path: 'jokedetail/:id', loadChildren: './pages/jokedetail/jokedetail.module#JokedetailPageModule' }
+  { path: 'jokedetail/:id', loadChildren: './pages/jokedetail/jokedetail.module#JokedetailPageModule', canActivate: [ AuthGuard ] }
 ];
 
 @NgModule({

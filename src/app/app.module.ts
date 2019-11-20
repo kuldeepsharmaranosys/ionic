@@ -4,7 +4,14 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +26,14 @@ import { SharedModule } from './shared/shared.module';
       swipeBackEnabled: false
     }),
     AppRoutingModule,
+    TranslateModule.forRoot({
+      isolate: false,
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+    }),
     SharedModule
   ],
   providers: [
