@@ -20,14 +20,9 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-    {
-      title: 'Select Language',
-      url: '/languageselect',
-      icon: 'globe'
+      title: 'Setting',
+      url: '/setting',
+      icon: 'settings'
     }
   ];
 
@@ -42,7 +37,9 @@ export class AppComponent {
   ) {
     this.us.initializeUser();
     this.initializeApp();
-    this.jcs.get();
+    this.jcs.get().then((menu: any)=>{
+      this.appPages = [this.appPages[0], ... menu, this.appPages[1]]
+    });
   }
 
   initializeApp() {

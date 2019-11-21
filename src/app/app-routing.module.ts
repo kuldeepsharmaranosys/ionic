@@ -28,7 +28,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/list/list.module').then(m => m.ListPageModule),
     canActivate: [AuthGuard]
   },
-  { path: 'jokedetail/:id', loadChildren: './pages/jokedetail/jokedetail.module#JokedetailPageModule', canActivate: [ AuthGuard ] }
+  { path: 'jokedetail/:id', loadChildren: './pages/jokedetail/jokedetail.module#JokedetailPageModule', canActivate: [ AuthGuard ] },
+  { path: 'setting', loadChildren: './pages/setting/setting.module#SettingPageModule' }
 ];
 
 @NgModule({

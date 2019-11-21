@@ -4,7 +4,8 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      {{ "HOME" | translate: {category: category} | uppercase }}
+     <span *ngIf="category == ''"> {{ "HOME" | translate | uppercase }} </span>
+      {{ category | translate | uppercase }}
     </ion-title>
   </ion-toolbar>
 </ion-header>

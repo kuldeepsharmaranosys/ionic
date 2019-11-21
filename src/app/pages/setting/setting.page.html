@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Setting</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item routerLink="/languageselect">
+      <ion-label>
+        Select Language
+      </ion-label>
+      <ion-icon name="globe" size="large" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item (click)="ss.rateApp()">
+      <ion-label>
+        Rate App
+      </ion-label>
+      <ion-icon name="star" size="large" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item (click)="ss.share('Share this app')">
+      <ion-label>
+        Social Sharing
+      </ion-label>
+      <ion-icon name="md-share" size="large" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item (click)="ss.updateVersion()">
+      <ion-label>
+        Update app version
+      </ion-label>
+      <ion-icon name="md-appstore" size="large" slot="start"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

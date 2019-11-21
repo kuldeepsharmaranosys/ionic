@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
+
 import { SharedModule } from '../../shared/shared.module';
-import { LanguageselectPage } from './languageselect.page';
+import { SettingPage } from './setting.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: LanguageselectPage
+    component: SettingPage
   }
 ];
 
@@ -22,6 +23,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LanguageselectPage]
+  declarations: [SettingPage]
 })
-export class LanguageselectPageModule {}
+export class SettingPageModule {}

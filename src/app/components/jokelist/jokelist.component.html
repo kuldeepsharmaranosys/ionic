@@ -1,4 +1,4 @@
-<ion-card class="welcome-card"  routerLink="/jokedetail/{{joke.id}}">
+<ion-card class="welcome-card"  routerLink="/jokedetail/{{joke.id}}" [queryParams]="joke">
   <ion-card-header *ngIf="joke?.categories.length">
     <ion-card-subtitle>{{joke?.categories}}</ion-card-subtitle>
   </ion-card-header>

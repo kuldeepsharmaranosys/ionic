@@ -16,7 +16,7 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of jcs.jokeCategories">
+          <!-- <ion-menu-toggle auto-hide="false" *ngFor="let p of jcs.jokeCategories">
             <ion-item [routerDirection]="'root'" [routerLink]="['home/'+p.name]">
               <ion-icon slot="start" [name]="'happy'"></ion-icon>
               <ion-label>
@@ -24,6 +24,14 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerDirection]="'root'" [routerLink]="['setting']">
+              <ion-icon slot="start" name="settings"></ion-icon>
+              <ion-label>
+                Setting
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
           <ion-menu-toggle auto-hide="false">
             <ion-item (click)="logout()" *ngIf="us.isLoggedIn">
               <ion-icon slot="start" name="log-out"></ion-icon>

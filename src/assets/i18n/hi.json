@@ -1,5 +1,11 @@
 {
-    "HOME": "होम {{category}}",
+    "HOME": "होम",
+    "Languageselect":{
+      "Select_language": "भाषा चुनिए",
+      "en": "English",
+      "hi": "हिन्दी",
+      "Next": "आगामी"
+    },
     "IntroPage": {
         "Skip": "छोड़ें",
         "Let": "आएँ शुरू करें"

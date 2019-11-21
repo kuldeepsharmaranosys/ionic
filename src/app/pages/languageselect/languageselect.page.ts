@@ -29,18 +29,24 @@ export class LanguageselectPage implements OnInit {
     });
     this.languageList = CONFIG.languageList;
   }
+  select(language) {
+    this.storage.set(STORAGE.isLanguageSelected, '1');
+    this.storage.set(STORAGE.language, language);
+    this.translate.setDefaultLang(language);
+    this.translate.use(language);
+  }
   submit() {
     this.storage.set(STORAGE.isLanguageSelected, '1');
     this.storage.set(STORAGE.language, this.language);
     this.translate.setDefaultLang(this.language);
-    this.translate.use(this.language).subscribe(()=>{
+    this.translate.use(this.language).subscribe(() => {
       if (this.isLanguageSelected) {
-        this.router.navigate(['home']);
+        this.router.navigate(['setting']);
       } else {
         this.router.navigate(['intro']);
       }
     });
-   
+
   }
 
 }

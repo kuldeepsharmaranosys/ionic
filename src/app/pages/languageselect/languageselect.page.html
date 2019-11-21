@@ -1,23 +1,25 @@
 <ion-header *ngIf="isLanguageSelected">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Select Language</ion-title>
+    <ion-title>{{ "Languageselect.Select_language" | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-radio-group [(ngModel)]="language">
+    <ion-radio-group [(ngModel)]="language" >
       <ion-list-header>
-        <ion-label>Select language</ion-label>
+        <ion-label>{{ "Languageselect.Select_language" | translate}}</ion-label>
       </ion-list-header>
-      <ion-item *ngFor="let languagetitle of languageList">
-        <ion-label>{{languagetitle}}</ion-label>
-        <ion-radio name="language" slot="start" value="{{languagetitle}}" checked></ion-radio>
+      <ion-item *ngFor="let languagetitle of languageList" lines="full">
+        <ion-label>{{ "Languageselect."+languagetitle  | translate }}</ion-label>
+        <ion-radio name="language" slot="start" value="{{languagetitle}}"  (ionSelect)="select(languagetitle)"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
-  <ion-button color="primary" (click)="submit()">Done</ion-button>
+  <ion-item lines="none">
+      <ion-button expand="block" slot="end" color="primary" (click)="submit()">{{ "Languageselect.Next" | translate }}</ion-button>
+  </ion-item>
 </ion-content>

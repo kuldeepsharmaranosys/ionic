@@ -10,6 +10,7 @@ import { AppRate } from '@ionic-native/app-rate/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import { environment } from '../../../environments/environment';
+import { isdummyData } from '../../constants/apiurl';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +29,9 @@ export class SharedService {
       'minlength': ' not having minlength',
       'maxlength': ' not having maxlength'
     };
+    if(isdummyData){
+      environment.APIBASEURL = ''
+    }
   }
 /**
  * @method showLoader
@@ -109,11 +113,11 @@ async presentToast(msg, durationShow = 2000) {
  */
 public hitApi(url: string, method: string = 'GET', data: any = {}, loaderShow = 'true', headerAdd = 'false', httpUrl = environment.APIBASEURL) {
   if (method === 'POST') {
-    return  this.http.post(environment.APIBASEURL + url, data, {params: {loader: loaderShow, header: headerAdd}}).pipe(
+    return  this.http.post(httpUrl + url, data, {params: {loader: loaderShow, header: headerAdd}}).pipe(
       map(results => results)
     );
   } else if (method === 'GET') {
-    return this.http.get(environment.APIBASEURL + url + "?" + this.toQueryString(data), {params: {loader: loaderShow, header: headerAdd}}).pipe(
+    return this.http.get(httpUrl + url + "?" + this.toQueryString(data), {params: {loader: loaderShow, header: headerAdd}}).pipe(
       map(results => results)
     );
   }

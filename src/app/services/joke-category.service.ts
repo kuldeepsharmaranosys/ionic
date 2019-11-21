@@ -9,12 +9,23 @@ export class JokeCategoryService {
   jokeCategories: JokeCategory[] = [];
   constructor(private ss: SharedService) { }
   get() {
-    this.ss.hitApi(APIURL.categories, 'GET', {}, 'false').subscribe((data: any) => {
-      if (data.type === 'success') {
-        data.value.forEach(element => {
-          this.jokeCategories.push({ name: element });
-        });
-      }
-    });
+    return new Promise((resolve, reject)=>{
+      this.ss.hitApi(APIURL.categories, 'GET', {}, 'false').subscribe((data: any) => {
+        if (data.type === 'success') {
+          let menu = [];
+          data.value.forEach(element => {
+            menu.push( {
+              title: element.charAt(0).toUpperCase() + element.slice(1),
+              url: '/home/'+element,
+              icon: 'happy'
+            });
+            this.jokeCategories.push({ name: element });
+            
+          });
+          resolve(menu)
+
+        }
+      });
+    })
   }
 }
